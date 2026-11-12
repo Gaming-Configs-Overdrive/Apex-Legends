@@ -1,8 +1,8 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { readConfigFile, writeConfigFile } from '../utils/fileUtils.js'
-import { generateVideoVariants } from '../utils/variants.js'
-import { applyVideoResolution } from '../utils/videoConfigUtils.js'
+import { readConfigFile, writeConfigFile } from './utils/fileUtils.js'
+import { generateVideoVariants } from './utils/variants.js'
+import { applyVideoResolution } from './utils/videoConfigUtils.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

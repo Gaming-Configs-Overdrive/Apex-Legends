@@ -11,7 +11,7 @@ export default {
   },
   plugins: [
     buildVideoConfigPlugin({
-      inputFile: '../videoconfig.txt',
+      inputFile: '../configs/videoconfig.txt',
       outputDir: '../dist',
       variants: [
         { name: '720p', width: 1280, height: 720 },
@@ -21,7 +21,7 @@ export default {
       ],
     }),
     buildAutoexecPlugin({
-      inputFile: '../autoexec.cfg',
+      inputFile: '../configs/autoexec.cfg',
       outputDir: '../dist',
       variants: [
         {

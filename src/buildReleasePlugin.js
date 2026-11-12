@@ -1,8 +1,8 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { getFilesByPattern } from '../utils/fileUtils.js'
-import { createAllCombinations } from '../utils/combinations.js'
-import { createZip } from '../utils/zipUtils.js'
+import { getFilesByPattern } from './utils/fileUtils.js'
+import { createAllCombinations } from './utils/combinations.js'
+import { createZip } from './utils/zipUtils.js'
 import fs from 'fs'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -16,7 +16,7 @@ export default function buildReleasePlugin(options) {
     buildEnd() {
       const installScriptPath = path.join(
         __dirname,
-        '../utils/install-windows-config.ps1'
+        './scripts/install-windows-config.ps1'
       )
 
       if (!fs.existsSync(installScriptPath)) {
