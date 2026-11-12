@@ -1,90 +1,105 @@
-[![Build and Release](https://github.com/pwnyprod/Apex-Legends-Config/actions/workflows/release.yml/badge.svg)](https://github.com/pwnyprod/Apex-Legends-Config/actions/workflows/release.yml)
-[![Publish README to GitHub Pages](https://github.com/pwnyprod/Apex-Legends-Config/actions/workflows/publish-readme.yml/badge.svg)](https://github.com/pwnyprod/Apex-Legends-Config/actions/workflows/publish-readme.yml)
+[![Release](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/actions/workflows/release.yml/badge.svg)](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/actions/workflows/release.yml)
+[![Lint](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/actions/workflows/lint.yml/badge.svg)](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/actions/workflows/lint.yml)
 
 # Apex Legends Konfigurationshilfe (Deutsch)
-> [Englische Readme Version hier](./README)
+
+> [Englische Readme Version hier](./README.md)
 >
-> [Veröffentlichung log](./CHANGELOG)
+> [Veröffentlichungs-Log](./CHANGELOG.md)
 
-Diese Anleitung zeigt dir, wie du speziell abgestimmte Konfigurationsdateien für Apex Legends nutzen kannst, um dein Spielerlebnis zu verbessern. Die bereitgestellten Pakete enthalten sowohl Videoeinstellungen als auch grundlegende Spieleinstellungen, die auf unterschiedliche Bedürfnisse abgestimmt sind.
+Abgestimmte `autoexec.cfg`- und `videoconfig.txt`-Presets für Apex Legends. Jede
+Variante kombiniert ein Profil mit einer Auflösung, z. B. `competitive-1080p`.
 
-## Worum geht es?
+## Varianten
 
-- **autoexec.cfg:**  
-  Diese Datei wird beim Spielstart automatisch geladen. Hier kannst du maximale Bildwiederholraten (FPS), Grafikeinstellungen und Audio-Anpassungen festlegen. Die verschiedenen Varianten bieten unterschiedliche Schwerpunkte:
-  - **competitive:** Auf maximale Leistung und Stabilität ausgerichtet, mit sehr hohen FPS, aber weniger grafischen Details.
-  - **quality:** Ein ausgewogener Mittelweg zwischen Bildqualität und solider Leistung.
-  - **ultraquality:** Maximale visuelle Qualität für leistungsstarke PCs, mit hochauflösenden Texturen und Effekten.
+- **Profile (`autoexec.cfg`):**
+  - **competitive:** maximale Leistung, FPS ungedeckelt, niedrigste Texturen.
+  - **quality:** ausgewogen zwischen Bildqualität und Leistung, 144 FPS.
+  - **ultraquality:** beste Optik für starke PCs, 240 FPS.
+- **Auflösungen (`videoconfig.txt`):** `720p`, `1080p`, `1440p`, `4k`.
 
-- **videoconfig.txt:**  
-  Diese Datei steuert die Auflösung und einige weitere Videoeinstellungen. Verschiedene Auflösungsvarianten sind verfügbar:
-  - **720p:** Niedrigere Auflösung, aber ressourcenschonend, ideal wenn Leistung vor Optik kommt.
-  - **1080p:** Standardqualität und -auflösung, ein guter Kompromiss für die meisten Spieler.
-  - **1440p:** Höhere Detailstufe als 1080p, benötigt jedoch mehr Systemleistung.
-  - **4k:** Sehr hohe Auflösung mit gestochen scharfen Details, empfohlen für sehr starke Hardware.
+## Hinweis zum Anti-Cheat
 
-## Installation der Konfigurationen
+Apex Legends ist ein Online-Spiel mit Easy Anti-Cheat. Die Nutzungsbedingungen von
+EA verbieten nicht autorisierte Änderungen an Spieldateien. `autoexec.cfg` und
+`videoconfig.txt` sind weit verbreitet und es sind keine Bans dafür bekannt, die
+Nutzung erfolgt aber auf eigenes Risiko
+([EA-Forum](https://forums.ea.com/discussions/apex-legends-general-discussion-en/autoexec/5198856)).
 
-1. **Paket auswählen:**  
-   Lade eines der vorbereiteten Pakete aus den [Releases](https://github.com/pwnyprod/Apex-Legends-Config/releases) herunter. Diese Pakete enthalten jeweils eine Kombination aus `autoexec.cfg`- und `videoconfig.txt`-Variante.
+## Installation mit dem Installer (empfohlen)
 
-2. **autoexec.cfg installieren:**  
-   - Entpacke das heruntergeladene Paket.
-   - Verschiebe die `autoexec.cfg` in den `cfg`-Ordner deiner Apex-Installation.  
-     Bei einer Steam-Installation findest du diesen meistens hier:  
-     `C:\Program Files (x86)\Steam\steamapps\common\Apex Legends\cfg`
-   
-3. **videoconfig.txt installieren:**  
-   - Drücke `Win + R` auf deiner Tastatur.
-   - Füge folgenden Pfad in das Ausführen-Fenster ein und bestätige:  
-     `%USERPROFILE%\Saved Games\Respawn\Apex\local`
-   - Kopiere die `videoconfig.txt` in dieses Verzeichnis und überschreibe ggf. die vorhandene Datei.
+1. `fullrelease.zip` aus den [Releases](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/releases) herunterladen und entpacken.
+2. Apex Legends schließen.
+3. `install.bat` starten und eine Variante wählen, oder den Installer direkt aufrufen:
+   ```bash
+   gco-install install --variant competitive-1080p --dry-run
+   gco-install install --variant competitive-1080p
+   ```
+   Steam-Installationen werden automatisch erkannt. Für die EA app
+   `--game-dir "<Apex-Installationsordner>"` angeben.
+4. Startoption `+exec autoexec` setzen (siehe unten).
+5. Alles rückgängig machen mit `gco-install restore`.
 
-### Schnelle Windows-Installation mit PowerShell
+Der Installer sichert beide Dateien, ersetzt `cfg/autoexec.cfg` im Spielordner und
+führt `videoconfig.txt` in
+`%USERPROFILE%\Saved Games\Respawn\Apex\local\videoconfig.txt` zusammen. Diese wird
+schreibgeschützt, damit das Spiel sie nicht zurücksetzt.
 
-Für Windows-Anwender steht ein Skript zur Verfügung, das beide Dateien automatisch kopiert und anschließend schreibschützt:
+## Manuelle Installation
 
-1. Entpacke das heruntergeladene Release-ZIP – `install-windows-config.ps1` liegt dort bereits zusammen mit den `autoexec*.cfg`- und `videoconfig*.txt`-Varianten.
-2. Öffne den entpackten Ordner, klicke mit der rechten Maustaste auf `install-windows-config.ps1` und wähle **„Mit PowerShell ausführen“**. Alternativ kannst du über `Shift + Rechtsklick` → „PowerShell-Fenster hier öffnen“ starten und den Befehl `.\install-windows-config.ps1` ausführen.
-3. Folge den Abfragen. Das Skript erkennt die Konfigurationsdateien automatisch, kopiert sie an die in der Anleitung genannten Pfade und setzt beide Dateien auf „Schreibgeschützt“, damit sie nicht vom Spiel überschrieben werden.
+1. `autoexec-<profil>_videoconfig-<auflösung>.zip` aus den
+   [Releases](https://github.com/Gaming-Configs-Overdrive/Apex-Legends/releases) herunterladen und entpacken.
+2. `autoexec.cfg` in den `cfg`-Ordner des Spiels kopieren, bei Steam meist
+   `C:\Program Files (x86)\Steam\steamapps\common\Apex Legends\cfg`.
+3. `Win + R` drücken, `%USERPROFILE%\Saved Games\Respawn\Apex\local` öffnen und
+   `videoconfig.txt` ersetzen. Datei schreibschützen (Eigenschaften → Schreibgeschützt).
+4. Startoption `+exec autoexec` setzen.
 
-Wenn du später Änderungen an den Dateien vornehmen möchtest, entferne den Schreibschutz kurzzeitig (z. B. mit `attrib -r <Dateiname>`) und führe das Skript anschließend erneut aus.
+Zum späteren Bearbeiten erst den Schreibschutz entfernen (`attrib -r videoconfig.txt`).
 
-4. **Startoptionen im Spiel:**  
-   - Öffne deine Apex Legends Bibliothek in Steam.
-   - Klicke mit Rechtsklick auf das Spiel und wähle "Eigenschaften".
-   - Gehe auf den Reiter "Allgemein".
-   - Füge unter "Startoptionen" folgende Befehle ein:  
-     `+exec autoexec.cfg -high -dev`  
-     Dadurch wird dein gewähltes Paket beim Spielstart automatisch geladen und das Spiel versucht mit höherer Priorität zu laufen.
+## Startoptionen
 
-#### **erweiterte Startoptionen:**
+Steam: Bibliothek → Rechtsklick auf Apex Legends → Eigenschaften → Allgemein → Startoptionen.
 
-| Command | Description |
-| --- | --- |
-| `+exec` | Führt eine CFG-Datei beim Spielstart aus. |
-| `-dev` | Überspringt das EA-Intro beim Spielstart; kann auf NVIDIA-Karten HUD-Flackern verursachen. |
-| `-fullscreen` | Erzwingt, dass das Spiel im Vollbildmodus startet. |
-| `-high` | Versucht, die Priorität des Spiels unter Windows auf „hoch“ zu setzen. |
-| `-anticheat_settings=SettingsDX11.json` | Erzwingt den Start des Spiels im DX11-Modus. |
-| `-anticheat_settings=SettingsDX12.json` | Erzwingt den Start des Spiels im DX12-Modus. |
+| Option                                  | Beschreibung                                                    |
+| --------------------------------------- | --------------------------------------------------------------- |
+| `+exec autoexec`                        | Führt `cfg/autoexec.cfg` beim Start aus (erforderlich)          |
+| `-dev`                                  | Überspringt das EA-Intro, kann HUD-Flackern bei NVIDIA auslösen |
+| `-fullscreen`                           | Erzwingt Vollbild                                               |
+| `-high`                                 | Versucht, die Prozesspriorität auf „hoch" zu setzen             |
+| `-anticheat_settings=SettingsDX11.json` | Erzwingt DX11                                                   |
+| `-anticheat_settings=SettingsDX12.json` | Erzwingt DX12                                                   |
 
-## Zusätzliche Hinweise
+## Keybinds in der autoexec
 
-- Du kannst jederzeit zwischen den verschiedenen Paketen wechseln, indem du einfach die gewünschte `autoexec.cfg` und `videoconfig.txt` aus den Release-Paketen auswählst und wie oben beschrieben einfügst.
-- Möchtest du Änderungen an der `autoexec.cfg` im laufenden Spiel anwenden, öffne die Konsole (falls über Startoptionen aktiviert) und gib `exec autoexec.cfg` ein.
-- Wenn du trotz angepasster Configs Probleme mit der Performance oder Bildqualität hast, probiere erst eine einfachere Variante (z. B. `competitive` mit `720p`) aus. Wenn dein PC stärker ist, kannst du nach und nach höhere Qualität einstellen.
+- **F3:** `disconnect`: Server bei starkem Lag verlassen.
+- **F4:** `miles_reboot; miles_stop_all`: Audio-Engine neu starten.
+- **F5:** `toggle showfps_enabled 0 1 2`: FPS-Anzeige und Performance-Graphen.
+- **F6:** `toggle shownet_enabled`: Netzwerk-Graph.
+- **F7:** `exec autoexec.cfg`: autoexec neu laden.
 
-## Bekannte Tastenkürzel in der autoexec
+## Tipps
 
-- **F3:** `disconnect` – Trennt dich bei starken Verzögerungen schnell vom Server.
-- **F4:** `miles_reboot; miles_stop_all` – Startet bei Tonproblemen die Audio-Engine neu.
-- **F5:** `toggle showfps_enabled 0 1 2` – Schaltet die FPS-Anzeige und weitere Performance-Diagramme um.
-- **F6:** `toggle shownet_enabled` – Zeigt Netzwerkdiagramme zur Überwachung deiner Verbindung.
-- **F7:** `exec autoexec.cfg` – Lädt die aktuelle autoexec erneut, um Änderungen sofort anzuwenden.
+- Schwache Hardware: mit `competitive-720p` oder `competitive-1080p` starten, dann hochgehen.
+- autoexec ohne Neustart anwenden: Konsole → `exec autoexec.cfg` (oder F7).
 
-## Allgemeine Tipps
+## Entwicklung
 
-- Experimentiere mit verschiedenen Kombinationen, um die für dich perfekte Balance aus Bildqualität und Leistung zu finden.
-- Hast du einen älteren oder schwächeren PC, starte mit leistungsschonenden Varianten.
-- Für hochauflösende Monitore oder starke Hardware wähle die hochwertigeren Varianten, um dein Spielerlebnis zu steigern.
+Node 24 (`.nvmrc`):
+
+```bash
+npm ci
+npm run variants   # configs/variants/ nach Änderungen an configs/* neu erzeugen
+npm run validate
+npm run build      # dist/: config.zip, fullrelease.zip, ZIP je Variante, MODS.md, SHA256SUMS
+npm test
+```
+
+Basisdateien liegen in `configs/autoexec.cfg` und `configs/videoconfig.txt`, Profile
+und Auflösungen in `scripts/lib/variants.mjs`. `configs/variants/` wird generiert und
+eingecheckt, weil der Installer es liest; `npm test` und `npm run build` schlagen
+fehl, wenn es veraltet ist. Manifest-Referenz: [docs/GAME_MANIFEST.md](./docs/GAME_MANIFEST.md).
+
+## Lizenz
+
+MIT
