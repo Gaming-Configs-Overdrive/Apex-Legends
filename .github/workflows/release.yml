@@ -18,15 +18,15 @@ jobs:
       - name: check CHANGELOG.md changed
         id: changelog-check
         run: |
-          PREV_TAG=$(git describe --tags --abbrev=0 ${{ github.ref_name }}^)
-          if git diff --name-only $PREV_TAG ${{ github.ref_name }} | grep -q "^CHANGELOG.md$"; then
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          if git diff --name-only $PREV_TAG HEAD | grep -q "^CHANGELOG.md$"; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -73,28 +73,9 @@ jobs:
 
       - name: Create GitHub Release
         if: steps.changelog-check.outputs.changed == 'true'
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: "v${{ steps.version.outputs.version }}"
-          release_name: "v${{ steps.version.outputs.version }}"
-          body: ${{ steps.notes.outputs.notes }}
-          draft: false
-          prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload each ZIP as release asset
-        if: steps.changelog-check.outputs.changed == 'true'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOTES: ${{ steps.notes.outputs.notes }}
         run: |
-          UPLOAD_URL="${{ steps.create_release.outputs.upload_url }}"
-          UPLOAD_URL_CLEANED=$(echo "$UPLOAD_URL" | sed 's/{?name,label}//')
-          for file in dist/releases/*.zip; do
-            filename=$(basename "$file")
-            curl \
-              -X POST \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Content-Type: application/zip" \
-              --data-binary @"$file" \
-              "${UPLOAD_URL_CLEANED}?name=$filename"
-          done
+          VERSION=${{ steps.version.outputs.version }}
+          gh release create "v$VERSION" dist/releases/*.zip --title "v$VERSION" --notes "$NOTES"
