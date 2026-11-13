@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 This file is based on the Semver-Model ('Added', 'Changed', 'Removed')
 
+## [Unreleased]
+
+### Added
+
+- `game.yml` manifest for the installer `gco-install` (12 variants `<profile>-<resolution>`, e.g. `competitive-1080p`)
+- `fullrelease.zip` with `install.bat` / `gco-install`: backs up, installs `autoexec.cfg` and merges `videoconfig.txt` (read-only), `gco-install restore` undoes it
+- generated variant files in `configs/variants/` (`npm run variants`), checked by `npm test` and `npm run build`
+- `config.zip`, `MODS.md` and `SHA256SUMS` in releases; tests with `node:test`
+
+### Changed
+
+- build: Rollup and Yarn replaced by the skeleton's Node 24 build (`npm run build`); variant ZIPs keep their names but are written directly to `dist/`
+- build: `dist/` is cleaned before each build
+- build: comment stripping keeps `//` inside quoted strings; overrides escape keys and allow empty values
+- ci: workflows are thin callers of the org's reusable workflows (`@v1`); `publish-readme.yml` renamed to `pages.yml`
+- `package.json` repository points to `Gaming-Configs-Overdrive/Apex-Legends`
+- docs: README (EN/DE) describe the installer, manual installation and the anti-cheat notice
+
+### Removed
+
+- PowerShell install script `install-windows-config.ps1` (replaced by `gco-install`); variant ZIPs no longer contain it
+- Rollup config, build plugins, `src/` and `yarn.lock`, `docs/ROLLUP_CONFIGURATION.md`
+
 ## [1.0.4] - add Windows quick install script instructions
 
 📦 build(utils): add PowerShell install script for Windows configuration
