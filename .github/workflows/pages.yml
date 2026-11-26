@@ -10,4 +10,4 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-pages.yml@v1
+    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-pages.yml@7bd88180843c911e0b233cc7b5aa7aa5713cd139

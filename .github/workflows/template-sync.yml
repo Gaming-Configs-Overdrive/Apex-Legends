@@ -11,5 +11,5 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-template-sync.yml@v1
+    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-template-sync.yml@7bd88180843c911e0b233cc7b5aa7aa5713cd139
     secrets: inherit

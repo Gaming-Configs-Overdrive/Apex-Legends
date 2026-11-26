@@ -20,10 +20,7 @@ variant combines one profile with one resolution, e.g. `competitive-1080p`.
 
 ## Anti-Cheat Notice
 
-Apex Legends is an online game with Easy Anti-Cheat. EA's terms forbid
-unauthorized changes to game files. `autoexec.cfg` and `videoconfig.txt` are
-widely used and no bans for them are known, but you use them at your own risk
-([EA forum](https://forums.ea.com/discussions/apex-legends-general-discussion-en/autoexec/5198856)).
+Apex Legends on PC uses [EA Javelin Anticheat](https://www.ea.com/games/apex-legends/apex-legends/news/javelin-anticheat-announcement). Follow the [EA User Agreement](https://www.ea.com/legal/user-agreement) when using custom configuration files.
 
 ## Installation with the Installer (recommended)
 
@@ -60,14 +57,14 @@ To edit the files later, remove the read-only flag first (`attrib -r videoconfig
 
 Steam: Library → right-click Apex Legends → Properties → General → Launch Options.
 
-| Option                                  | Description                                               |
-| --------------------------------------- | --------------------------------------------------------- |
-| `+exec autoexec`                        | Executes `cfg/autoexec.cfg` on startup (required)         |
-| `-dev`                                  | Skips the EA intro, can cause HUD flicker on NVIDIA cards |
-| `-fullscreen`                           | Forces fullscreen mode                                    |
-| `-high`                                 | Attempts to set the game's process priority to "high"     |
-| `-anticheat_settings=SettingsDX11.json` | Forces DX11                                               |
-| `-anticheat_settings=SettingsDX12.json` | Forces DX12                                               |
+| Option           | Description                                               |
+| ---------------- | --------------------------------------------------------- |
+| `+exec autoexec` | Executes `cfg/autoexec.cfg` on startup (required)         |
+| `-dev`           | Skips the EA intro, can cause HUD flicker on NVIDIA cards |
+| `-fullscreen`    | Forces fullscreen mode                                    |
+| `-high`          | Attempts to set the game's process priority to "high"     |
+
+Launch Apex Legends normally with DirectX 12. Respawn retired DirectX 11 support. [Game Reliability Update](https://forums.ea.com/blog/apex-legends-game-info-hub-en/apex-legends%E2%84%A2-game-reliability-update/12263037)
 
 ## Keybinds in autoexec
 
@@ -76,6 +73,14 @@ Steam: Library → right-click Apex Legends → Properties → General → Launc
 - **F5:** `toggle showfps_enabled 0 1 2`: FPS display and performance graphs.
 - **F6:** `toggle shownet_enabled`: network graph.
 - **F7:** `exec autoexec.cfg`: reload the autoexec.
+
+## Video settings in Cipher (Season 31)
+
+- In **Settings → Video**, EA recommends enabling NVIDIA Reflex on NVIDIA GPUs, leaving V-Sync off unless you see tearing, and leaving the adaptive resolution FPS target off unless you experience frequent FPS drops. [EA PC settings guide](https://help.ea.com/en/articles/apex-legends/best-settings-pc/)
+- For competitive play, EA recommends disabling Ambient Occlusion. For image quality, try it in the Video menu. Overclocked improved Ambient Occlusion and added specular occlusion. EA reports it is generally faster than the previous implementation, with exceptions at High or Ultra at 4K on PC. [EA PC settings guide](https://help.ea.com/en/articles/apex-legends/best-settings-pc/) · [Overclocked patch notes](https://www.ea.com/games/apex-legends/apex-legends/news/overclocked-patch-notes)
+- Cipher changed lighting, fog and auto-exposure across maps as engine updates. Check visibility and FPS in the current build after applying a preset. [Cipher patch notes](https://www.ea.com/games/apex-legends/apex-legends/news/cipher-patch-notes)
+
+Remove the read-only flag on `videoconfig.txt` before changing video settings you want the game to save.
 
 ## Tips
 

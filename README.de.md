@@ -20,11 +20,7 @@ Variante kombiniert ein Profil mit einer Auflösung, z. B. `competitive-1080p`.
 
 ## Hinweis zum Anti-Cheat
 
-Apex Legends ist ein Online-Spiel mit Easy Anti-Cheat. Die Nutzungsbedingungen von
-EA verbieten nicht autorisierte Änderungen an Spieldateien. `autoexec.cfg` und
-`videoconfig.txt` sind weit verbreitet und es sind keine Bans dafür bekannt, die
-Nutzung erfolgt aber auf eigenes Risiko
-([EA-Forum](https://forums.ea.com/discussions/apex-legends-general-discussion-en/autoexec/5198856)).
+Apex Legends nutzt auf dem PC [EA Javelin Anticheat](https://www.ea.com/games/apex-legends/apex-legends/news/javelin-anticheat-announcement). Beachte bei eigenen Konfigurationsdateien die [EA-Nutzervereinbarung](https://www.ea.com/de-de/legal/user-agreement).
 
 ## Installation mit dem Installer (empfohlen)
 
@@ -61,14 +57,14 @@ Zum späteren Bearbeiten erst den Schreibschutz entfernen (`attrib -r videoconfi
 
 Steam: Bibliothek → Rechtsklick auf Apex Legends → Eigenschaften → Allgemein → Startoptionen.
 
-| Option                                  | Beschreibung                                                    |
-| --------------------------------------- | --------------------------------------------------------------- |
-| `+exec autoexec`                        | Führt `cfg/autoexec.cfg` beim Start aus (erforderlich)          |
-| `-dev`                                  | Überspringt das EA-Intro, kann HUD-Flackern bei NVIDIA auslösen |
-| `-fullscreen`                           | Erzwingt Vollbild                                               |
-| `-high`                                 | Versucht, die Prozesspriorität auf „hoch" zu setzen             |
-| `-anticheat_settings=SettingsDX11.json` | Erzwingt DX11                                                   |
-| `-anticheat_settings=SettingsDX12.json` | Erzwingt DX12                                                   |
+| Option           | Beschreibung                                                    |
+| ---------------- | --------------------------------------------------------------- |
+| `+exec autoexec` | Führt `cfg/autoexec.cfg` beim Start aus (erforderlich)          |
+| `-dev`           | Überspringt das EA-Intro, kann HUD-Flackern bei NVIDIA auslösen |
+| `-fullscreen`    | Erzwingt Vollbild                                               |
+| `-high`          | Versucht, die Prozesspriorität auf „hoch" zu setzen             |
+
+Starte Apex Legends wie gewohnt mit DirectX 12. Respawn hat die Unterstützung für DirectX 11 eingestellt. [Game Reliability Update](https://forums.ea.com/blog/apex-legends-game-info-hub-en/apex-legends%E2%84%A2-game-reliability-update/12263037)
 
 ## Keybinds in der autoexec
 
@@ -77,6 +73,14 @@ Steam: Bibliothek → Rechtsklick auf Apex Legends → Eigenschaften → Allgeme
 - **F5:** `toggle showfps_enabled 0 1 2`: FPS-Anzeige und Performance-Graphen.
 - **F6:** `toggle shownet_enabled`: Netzwerk-Graph.
 - **F7:** `exec autoexec.cfg`: autoexec neu laden.
+
+## Videoeinstellungen in Cipher (Saison 31)
+
+- Unter **Einstellungen → Video** empfiehlt EA, NVIDIA Reflex auf NVIDIA-GPUs zu aktivieren, V-Sync nur bei sichtbarem Tearing einzuschalten und die Ziel-FPS für die adaptive Auflösung nur bei häufigen FPS-Einbrüchen zu setzen. [EA-Leitfaden für PC-Einstellungen](https://help.ea.com/de/articles/apex-legends/best-settings-pc/)
+- Für Wettkämpfe empfiehlt EA, Ambient Occlusion zu deaktivieren. Wenn dir Bildqualität wichtiger ist, probiere die Option im Videomenü aus. Overclocked hat Ambient Occlusion verbessert und um die Abschattung von Glanzreflexionen erweitert. Laut EA ist die neue Implementierung meist schneller als die alte. Ausnahmen sind Hoch oder Ultra bei 4K auf dem PC. [EA-Leitfaden für PC-Einstellungen](https://help.ea.com/de/articles/apex-legends/best-settings-pc/) · [Overclocked-Patchnotes](https://www.ea.com/games/apex-legends/apex-legends/news/overclocked-patch-notes)
+- Cipher hat Beleuchtung, Nebel und automatische Belichtung auf allen Karten als Teil eines Engine-Updates überarbeitet. Prüfe Sichtbarkeit und FPS in der aktuellen Version, nachdem du ein Preset angewendet hast. [Cipher-Patchnotes](https://www.ea.com/games/apex-legends/apex-legends/news/cipher-patch-notes)
+
+Entferne den Schreibschutz von `videoconfig.txt`, bevor du im Spiel Videoeinstellungen änderst, die gespeichert werden sollen.
 
 ## Tipps
 

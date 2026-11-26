@@ -8,4 +8,4 @@ on:
 
 jobs:
   lint:
-    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-lint.yml@v1
+    uses: Gaming-Configs-Overdrive/.github/.github/workflows/game-lint.yml@7bd88180843c911e0b233cc7b5aa7aa5713cd139

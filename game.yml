@@ -9,7 +9,7 @@ stores:
   steam:
     appid: 1172470
 detect:
-  exe: r5apex.exe
+  exe: r5apex_dx12.exe
 processes: [r5apex.exe, r5apex_dx12.exe]
 variants:
   - competitive-1080p
@@ -39,5 +39,5 @@ files:
 notes:
   launchOptions: '+exec autoexec'
   general: >-
-    EA app / Epic: pass --game-dir. Unauthorized file changes violate EA's
-    terms; no bans for autoexec.cfg or videoconfig.txt are known.
+    EA app / Epic: pass --game-dir. Follow the EA User Agreement when using
+    custom configuration files.

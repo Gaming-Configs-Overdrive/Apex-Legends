@@ -8,6 +8,8 @@ This file is based on the Semver-Model ('Added', 'Changed', 'Removed')
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-26
+
 ### Added
 
 - `game.yml` manifest for the installer `gco-install` (12 variants `<profile>-<resolution>`, e.g. `competitive-1080p`)
@@ -22,7 +24,11 @@ This file is based on the Semver-Model ('Added', 'Changed', 'Removed')
 - build: comment stripping keeps `//` inside quoted strings; overrides escape keys and allow empty values
 - ci: workflows are thin callers of the org's reusable workflows (`@v1`); `publish-readme.yml` renamed to `pages.yml`
 - `package.json` repository points to `Gaming-Configs-Overdrive/Apex-Legends`
-- docs: README (EN/DE) describe the installer, manual installation and the anti-cheat notice
+- docs: README (EN/DE) describe the installer, manual installation, EA Javelin Anticheat and in-game video settings for Cipher
+
+### Fixed
+
+- installer: detect current Apex Legends installs via `r5apex_dx12.exe`
 
 ### Removed
 
